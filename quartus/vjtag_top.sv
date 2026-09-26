@@ -51,37 +51,17 @@ module vjtag_top (
 	 
     // Mantenemos TDO conectado al LSB para cerrar el lazo de comunicación
     assign tdo = rx_shift_reg[0];
+	 
+	 
+	 // ===================================================================
+    // contador simple de 8 bits. Esto es lo que corre solo y se ve
+    // continuamente en la captura de SignalTap.
+    // ===================================================================
+    reg [7:0] data_counter;
+ 
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) data_counter <= 8'h00;
+        else        data_counter <= data_counter + 1'b1;
+    end
 
 endmodule 
-
-
-	 // ===================================================================
-    // Stream de datos representativo (dominio "clk", independiente del
-    // JTAG). Esto es lo que corre solo y se ve continuamente en la
-    // captura de SignalTap, junto a los pulsos del vJTAG cuando se lo
-    // ejercita desde la PC.
-    // ===================================================================
-    logic [23:0] clk_div;
-    logic [7:0]  data_counter;
-    logic [15:0] lfsr;
-    logic        tick;
- 
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) clk_div <= 24'd0;
-        else        clk_div <= clk_div + 1'b1;
-    end
- 
-    assign tick = clk_div[19];   // ~190 Hz con clk = 50 MHz; 
-	 
-	 // Contador incremental
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n)      data_counter <= 8'h00;
-        else if (tick)   data_counter <= data_counter + 1'b1;
-    end
-	 
-    // Generador Pseudoaleatorio (LFSR)
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n)      lfsr <= 16'hACE1;                 // semilla != 0
-        else if (tick)   lfsr <= {lfsr[14:0],
-                                   lfsr[15] ^ lfsr[13] ^ lfsr[12] ^ lfsr[10]};
-    end
