@@ -10,7 +10,7 @@ module top_counter (
  
     debounce #(.N(800000)) u_debounce (
         .clk (clk),
-        .rst (rst),
+        .rst (!rst),
         .ent (btn_inc),
         .out (btn_pulse)
     );
@@ -18,8 +18,8 @@ module top_counter (
     // Contador de 8 bits
     logic [7:0] count;
  
-    always_ff @(posedge clk or posedge rst) begin
-        if (rst)
+    always_ff @(posedge clk or negedge rst) begin
+        if (!rst)
             count <= 8'd0;
         else if (btn_pulse)
             count <= count + 1'b1;
