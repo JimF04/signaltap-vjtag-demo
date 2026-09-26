@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.09.25.06:52:27"
- outputDirectory="C:/Users/jimmy/GitHub/signaltap-vjtag-demo/quartus/vjatg/">
+ date="2026.09.25.19:38:53"
+ outputDirectory="C:/Users/jimmy/GitHub/signaltap-vjtag-demo/quartus/vjtag/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -92,31 +92,31 @@
  </perimeter>
  <entity
    path=""
-   parameterizationKey="vjatg:1.0:AUTO_DEVICE=5CGXFC7C7F23C8,AUTO_DEVICE_FAMILY=Cyclone V,AUTO_DEVICE_SPEEDGRADE=8_H7,AUTO_GENERATION_ID=1790340746,AUTO_UNIQUE_ID=(altera_virtual_jtag:18.1:CREATE_PRIMITIVE_JTAG_STATE_SIGNAL_PORTS=false,device_family=Cyclone V,gui_use_auto_index=true,sld_auto_instance_index=YES,sld_instance_index=0,sld_ir_width=1)"
-   instancePathKey="vjatg"
-   kind="vjatg"
+   parameterizationKey="vjtag:1.0:AUTO_DEVICE=5CGXFC7C7F23C8,AUTO_DEVICE_FAMILY=Cyclone V,AUTO_DEVICE_SPEEDGRADE=8_H7,AUTO_GENERATION_ID=1790386732,AUTO_UNIQUE_ID=(altera_virtual_jtag:18.1:CREATE_PRIMITIVE_JTAG_STATE_SIGNAL_PORTS=false,device_family=Cyclone V,gui_use_auto_index=true,sld_auto_instance_index=YES,sld_instance_index=0,sld_ir_width=1)"
+   instancePathKey="vjtag"
+   kind="vjtag"
    version="1.0"
-   name="vjatg">
-  <parameter name="AUTO_GENERATION_ID" value="1790340746" />
+   name="vjtag">
+  <parameter name="AUTO_GENERATION_ID" value="1790386732" />
   <parameter name="AUTO_DEVICE" value="5CGXFC7C7F23C8" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="AUTO_UNIQUE_ID" value="" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="8_H7" />
   <generatedFiles>
    <file
-       path="C:/Users/jimmy/GitHub/signaltap-vjtag-demo/quartus/vjatg/synthesis/vjatg.v"
+       path="C:/Users/jimmy/GitHub/signaltap-vjtag-demo/quartus/vjtag/synthesis/vjtag.v"
        type="VERILOG" />
   </generatedFiles>
   <childGeneratedFiles/>
   <sourceFiles>
-   <file path="C:/Users/jimmy/GitHub/signaltap-vjtag-demo/quartus/vjatg.qsys" />
+   <file path="C:/Users/jimmy/GitHub/signaltap-vjtag-demo/quartus/vjtag.qsys" />
   </sourceFiles>
   <childSourceFiles>
    <file
        path="C:/intelfpga_lite/18.1/ip/altera/sld/jtag/altera_virtual_jtag/altera_virtual_jtag_hw.tcl" />
   </childSourceFiles>
   <messages>
-   <message level="Debug" culprit="vjatg">queue size: 0 starting:vjatg "vjatg"</message>
+   <message level="Debug" culprit="vjtag">queue size: 0 starting:vjtag "vjtag"</message>
    <message level="Progress" culprit="min"></message>
    <message level="Progress" culprit="max"></message>
    <message level="Progress" culprit="current"></message>
@@ -129,15 +129,15 @@
    <message level="Debug">Transform: InterruptFanoutTransform</message>
    <message level="Debug">Transform: AvalonStreamingTransform</message>
    <message level="Debug">Transform: ResetAdaptation</message>
-   <message level="Debug" culprit="vjatg"><![CDATA["<b>vjatg</b>" reuses <b>altera_virtual_jtag</b> "<b>submodules/sld_virtual_jtag</b>"]]></message>
-   <message level="Debug" culprit="vjatg">queue size: 0 starting:altera_virtual_jtag "submodules/sld_virtual_jtag"</message>
-   <message level="Info" culprit="virtual_jtag_0"><![CDATA["<b>vjatg</b>" instantiated <b>altera_virtual_jtag</b> "<b>virtual_jtag_0</b>"]]></message>
+   <message level="Debug" culprit="vjtag"><![CDATA["<b>vjtag</b>" reuses <b>altera_virtual_jtag</b> "<b>submodules/sld_virtual_jtag</b>"]]></message>
+   <message level="Debug" culprit="vjtag">queue size: 0 starting:altera_virtual_jtag "submodules/sld_virtual_jtag"</message>
+   <message level="Info" culprit="virtual_jtag_0"><![CDATA["<b>vjtag</b>" instantiated <b>altera_virtual_jtag</b> "<b>virtual_jtag_0</b>"]]></message>
   </messages>
  </entity>
  <entity
    path="submodules/"
    parameterizationKey="altera_virtual_jtag:18.1:CREATE_PRIMITIVE_JTAG_STATE_SIGNAL_PORTS=false,device_family=Cyclone V,gui_use_auto_index=true,sld_auto_instance_index=YES,sld_instance_index=0,sld_ir_width=1"
-   instancePathKey="vjatg:.:virtual_jtag_0"
+   instancePathKey="vjtag:.:virtual_jtag_0"
    kind="altera_virtual_jtag"
    version="18.1"
    name="sld_virtual_jtag">
@@ -154,10 +154,10 @@
        path="C:/intelfpga_lite/18.1/ip/altera/sld/jtag/altera_virtual_jtag/altera_virtual_jtag_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
-  <instantiator instantiator="vjatg" as="virtual_jtag_0" />
+  <instantiator instantiator="vjtag" as="virtual_jtag_0" />
   <messages>
-   <message level="Debug" culprit="vjatg">queue size: 0 starting:altera_virtual_jtag "submodules/sld_virtual_jtag"</message>
-   <message level="Info" culprit="virtual_jtag_0"><![CDATA["<b>vjatg</b>" instantiated <b>altera_virtual_jtag</b> "<b>virtual_jtag_0</b>"]]></message>
+   <message level="Debug" culprit="vjtag">queue size: 0 starting:altera_virtual_jtag "submodules/sld_virtual_jtag"</message>
+   <message level="Info" culprit="virtual_jtag_0"><![CDATA["<b>vjtag</b>" instantiated <b>altera_virtual_jtag</b> "<b>virtual_jtag_0</b>"]]></message>
   </messages>
  </entity>
 </deploy>

@@ -1,5 +1,5 @@
 
-module vjatg (
+module vjtag (
 	tdi,
 	tdo,
 	ir_in,

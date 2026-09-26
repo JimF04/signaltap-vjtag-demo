@@ -1,4 +1,4 @@
-	component vjatg is
+	component vjtag is
 		port (
 			tdi                : out std_logic;                                       -- tdi
 			tdo                : in  std_logic                    := 'X';             -- tdo
@@ -14,9 +14,9 @@
 			virtual_state_uir  : out std_logic;                                       -- virtual_state_uir
 			tck                : out std_logic                                        -- clk
 		);
-	end component vjatg;
+	end component vjtag;
 
-	u0 : component vjatg
+	u0 : component vjtag
 		port map (
 			tdi                => CONNECTED_TO_tdi,                -- jtag.tdi
 			tdo                => CONNECTED_TO_tdo,                --     .tdo

@@ -1,4 +1,4 @@
-	vjatg u0 (
+	vjtag u0 (
 		.tdi                (<connected-to-tdi>),                // jtag.tdi
 		.tdo                (<connected-to-tdo>),                //     .tdo
 		.ir_in              (<connected-to-ir_in>),              //     .ir_in
