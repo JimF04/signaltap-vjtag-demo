@@ -1,6 +1,7 @@
 module vjtag_top (
     input logic clk,
-	 input logic rst_n
+	 input logic rst_n,
+	 output logic [7:0] leds_reg
 );
 
     // Señales de interfaz del IP vJTAG
@@ -63,5 +64,7 @@ module vjtag_top (
         if (!rst_n) data_counter <= 8'h00;
         else        data_counter <= data_counter + 1'b1;
     end
+	 
+	 assign leds_reg = data_counter;
 
 endmodule 
