@@ -1,7 +1,7 @@
 module vjtag_top (
     input logic clk,
 	 input logic rst_n,
-	 output logic [7:0] leds_reg
+	 output logic [7:0] leds
 );
 
     // Señales de interfaz del IP vJTAG
@@ -54,17 +54,13 @@ module vjtag_top (
     assign tdo = rx_shift_reg[0];
 	 
 	 
-	 // ===================================================================
-    // contador simple de 8 bits. Esto es lo que corre solo y se ve
-    // continuamente en la captura de SignalTap.
-    // ===================================================================
-    reg [7:0] data_counter;
+    reg [7:0] led_reg;
  
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) data_counter <= 8'h00;
-        else        data_counter <= data_counter + 1'b1;
+    always @(posedge tck or negedge rst_n) begin
+        if (!rst_n)                led_reg <= 8'h00;
+        else if (virtual_state_udr) led_reg <= rx_shift_reg;
     end
-	 
-	 assign leds_reg = data_counter;
+ 
+    assign leds = led_reg;
 
 endmodule 
