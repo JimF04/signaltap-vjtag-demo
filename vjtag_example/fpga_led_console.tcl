@@ -70,7 +70,7 @@ proc connect_jtag {} {
 
     set displayConnect "Conectado: $usbblaster_name / $test_device"
     .btnConn configure -state disabled
-    foreach b {.btnAllOn .btnAllOff .btnChase} { $b configure -state normal }
+    foreach b {.btnAllOn .btnAllOff} { $b configure -state normal }
 }
 
 proc open_port  {} { global usbblaster_name test_device
@@ -129,48 +129,31 @@ proc all_off {} {
 }
 
 # ---------------------------------------------------------------------
-# Efecto "chaser": un LED prendido que va corriendo de izquierda a
-# derecha. "update" fuerza a Tk a refrescar la pantalla en cada paso.
-# ---------------------------------------------------------------------
-proc chase {} {
-    global led_state
-    for {set pos 0} {$pos < 8} {incr pos} {
-        for {set i 0} {$i < 8} {incr i} { set led_state($i) 0 }
-        set led_state($pos) 1
-        for {set i 0} {$i < 8} {incr i} { redraw_led $i }
-        send_leds
-        update
-        after 150
-    }
-    all_off
-}
-
-# ---------------------------------------------------------------------
-# Interfaz grafica
+# Interfaz gráfica
 # ---------------------------------------------------------------------
 frame .frmConn
 label  .lblConn -textvariable displayConnect
 button .btnConn -text "Connect" -command connect_jtag
-grid .btnConn -in .frmConn -row 1 -column 1
-grid .lblConn -in .frmConn -row 2 -column 1
+grid .btnConn -in .frmConn -row 1 -column 1 -padx 5
+grid .lblConn -in .frmConn -row 2 -column 1 -padx 5
 
-canvas .cv -width 340 -height 90 -bg white -highlightthickness 0
+canvas .cv -width 340 -height 80 -bg white -highlightthickness 0
 for {set i 7} {$i >= 0} {incr i -1} {
     set col [expr {7 - $i}]
     set x [expr {20 + $col*40}]
     .cv create oval $x 15 [expr {$x+30}] 45 -fill #333333 -outline black -width 2 -tags led$i
-    .cv create text  [expr {$x+15}] 65 -text "D$i"
+    .cv create text  [expr {$x+15}] 60 -text "D$i"
     .cv bind led$i <Button-1> "toggle_led $i"
 }
 
 frame .frmBtns
 button .btnAllOn  -text "Todos ON"  -command all_on  -state disabled
 button .btnAllOff -text "Todos OFF" -command all_off -state disabled
-grid .btnAllOn  -in .frmBtns -row 1 -column 1
-grid .btnAllOff -in .frmBtns -row 1 -column 2
+grid .btnAllOn  -in .frmBtns -row 1 -column 1 -padx 5
+grid .btnAllOff -in .frmBtns -row 1 -column 2 -padx 5
 
 grid .frmConn -row 1 -column 1 -pady 5
-grid .cv      -row 2 -column 1 -pady 10
-grid .frmBtns -row 2 -column 1 -pady 10
+grid .cv      -row 2 -column 1 -pady 5
+grid .frmBtns -row 3 -column 1 -pady 10
 
 tkwait window .
